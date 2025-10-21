@@ -1,0 +1,49 @@
+Component,Final Selection
+
+Frontend (Web UI),Angular
+
+Backend (Server),Python (FastAPI or Flask)
+
+Database (Relational),PostgreSQL
+
+LLM Model,OpenAI GPT-4 via API
+
+LLM Orchestration,LangChain
+
+Vector Database,Pinecone (or Weaviate)
+
+Caching,Redis
+
+Workflow/Scheduling,Celery + Redis
+
+Core Integrations,"ClickUp API, Slack SDK, GitHub API"
+
+
+
+
+
+```
+eof
+
+### How to Test This File
+
+1.  **Save the file:** Save the code above as `src/ai_service.py` in your project structure.
+2.  **Ensure Environment is Ready:** Make sure your `OPENAI_API_KEY` is set in your `.env` file and that you are in your virtual environment.
+3.  **Run the script directly:**
+
+    ```bash
+    # Navigate to your project's root folder
+    python src/ai_service.py
+    ```
+
+If successful, you will see output similar to this, demonstrating that the LLM call worked and followed your persona instructions:
+
+```
+--- Testing LLM Standup Summary Generation ---
+INFO:__main__:Calling OpenAI API for standup summary generation...
+INFO:__main__:Successfully generated summary.
+
+--- Generated Summary ---
+* **Done**: Implementation of the new login feature and deployment of database changes were completed.
+* **Doing**: Work on the payment integration module is scheduled to begin today.
+* **Blockers**: Approval on the new encryption keys from the security team is pending.
