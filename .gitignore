@@ -1,0 +1,102 @@
+# =========================================
+# 🌍 General
+# =========================================
+.DS_Store
+*.log
+*.env
+*.pyc
+__pycache__/
+*.sqlite3
+*.db
+
+# =========================================
+# 🐍 Python Backend
+# =========================================
+venv/
+env/
+ENV/
+.vscode/
+.idea/
+*.egg-info/
+*.egg
+*.pyo
+*.pyd
+*.swp
+.coverage
+.pytest_cache/
+migrations/
+alembic/versions/
+instance/
+uploads/
+.cache/
+dist/
+build/
+
+# =========================================
+# ⚙️ FastAPI / Uvicorn
+# =========================================
+*.pid
+*.log
+*.out
+*.err
+
+# =========================================
+# 🐳 Docker
+# =========================================
+# Docker
+*.pid
+*.tar
+*.sock
+docker-compose.override.yml
+docker-compose.local.yml
+
+# =========================================
+# 🧱 Node / Angular Frontend
+# =========================================
+frontend/node_modules/
+frontend/.angular/
+frontend/dist/
+frontend/.env
+frontend/.vercel/
+frontend/.firebase/
+frontend/package-lock.json
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.npm/
+frontend/.pnpm-debug.log*
+
+# =========================================
+# 🧪 Testing / Coverage
+# =========================================
+coverage/
+htmlcov/
+nosetests.xml
+junit.xml
+test-results.xml
+*.cover
+*.coverage
+.cache/
+.pytest_cache/
+.tox/
+.nox/
+
+# =========================================
+# 🔐 Environment / API Keys
+# =========================================
+*.env
+.env.*
+!.env.example
+
+# =========================================
+# 🧰 IDE / Editor files
+# =========================================
+.vscode/
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.history/

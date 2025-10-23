@@ -3,6 +3,17 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.sql import text
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:4200"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 # 1. Load the .env file
 load_dotenv() 
 
