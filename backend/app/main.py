@@ -1,36 +1,47 @@
+# main.py
 import os
-from dotenv import load_dotenv 
-from sqlalchemy import create_engine
-from sqlalchemy.sql import text
-
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, text
 
+# Load .env file
+load_dotenv()
+
+# Initialize FastAPI app
+app = FastAPI(title="AI Scrum Master")
+
+# Allow frontend (Angular) to connect
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200"],
+    allow_origins=["*"],  # You can restrict this later to your frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-
-# 1. Load the .env file
-load_dotenv() 
-
-# 2. Load the DATABASE_URL from the environment
+# Get database URL from environment
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-# 2. Load the DATABASE_URL from the environment
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-# Create the SQLAlchemy engine
+# Create SQLAlchemy engine
 engine = create_engine(DATABASE_URL)
 
-# Test the connection (Health Check)
-try:
-    with engine.connect() as connection:
-        result = connection.execute(text("SELECT 1"))
-        print("Database connection successful!")
-        
-except Exception as e:
-    print(f"Database connection failed: {e}")
+# Health check route
+@app.get("/health")
+def health_check():
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+        return {"status": "ok", "message": "Database connection successful!"}
+    except Exception as e:
+        return {"status": "fail", "error": str(e)}
+    
+@app.get("/standup/latest")
+def latest_standup():
+    return {"summary": "<b>Yesterday:</b> Fixed bugs<br><b>Today:</b> Deploying updates<br><b>Blockers:</b> None"}
+
+
+# Root route
+@app.get("/")
+def root():
+    return {"message": "Welcome to AI Scrum Master API"}
